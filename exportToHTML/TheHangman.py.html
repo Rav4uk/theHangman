@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>TheHangman.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { }
+.s1 { color: rgb(0,128,0); font-weight: bold; }
+.s2 { color: rgb(0,0,128); font-weight: bold; }
+.s3 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+TheHangman.py</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">__author__ = </span><span class="s1">'Raven'</span><span class="s0"> 
+</span><span class="s2">def </span><span class="s0">body(word): 
+    tries = </span><span class="s3">6</span><span class="s0"> 
+    hint=</span><span class="s1">'m'</span><span class="s0"> 
+    </span><span class="s2">while </span><span class="s0">hint ==</span><span class="s1">'m'</span><span class="s0">: 
+        hint=raw_input(</span><span class="s1">&quot;Do you need a hint? y/n &quot;</span><span class="s0">) 
+        </span><span class="s2">if </span><span class="s0">hint==</span><span class="s1">'y'</span><span class="s0">: 
+            answer=</span><span class="s1">''</span><span class="s0"> 
+            </span><span class="s2">for </span><span class="s0">i </span><span class="s2">in </span><span class="s0">range(</span><span class="s3">0</span><span class="s0">,len(word)): 
+                </span><span class="s2">if </span><span class="s0">word[i]==word[</span><span class="s3">0</span><span class="s0">]: 
+                    answer+=word[i] 
+                </span><span class="s2">else</span><span class="s0">: 
+                    answer+=</span><span class="s1">'-'</span><span class="s0"> 
+        </span><span class="s2">elif </span><span class="s0">hint == </span><span class="s1">'n'</span><span class="s0">: 
+            answer=</span><span class="s1">'-'</span><span class="s0">*len(word) 
+        </span><span class="s2">else</span><span class="s0">: 
+            </span><span class="s2">print </span><span class="s1">&quot;repeat!&quot;</span><span class="s0"> 
+            hint=</span><span class="s1">'m'</span><span class="s0"> 
+    </span><span class="s2">print </span><span class="s0">answer 
+    were=</span><span class="s1">''</span><span class="s0"> 
+    </span><span class="s2">while </span><span class="s0">tries&gt;</span><span class="s3">0</span><span class="s0">: 
+        </span><span class="s2">print </span><span class="s1">&quot;%d tries left&quot; </span><span class="s0">%tries 
+        guess=raw_input(</span><span class="s1">&quot;Your letter: &quot;</span><span class="s0">) 
+        </span><span class="s2">while </span><span class="s0">guess </span><span class="s2">not in </span><span class="s0">letters: 
+            </span><span class="s2">print </span><span class="s1">'Enter English letter(small)'</span><span class="s0"> 
+            guess=raw_input(</span><span class="s1">&quot;Your letter: &quot;</span><span class="s0">) 
+        </span><span class="s2">if </span><span class="s0">guess </span><span class="s2">in </span><span class="s0">answer </span><span class="s2">or </span><span class="s0">guess </span><span class="s2">in </span><span class="s0">were: 
+            </span><span class="s2">print </span><span class="s1">&quot;This letter has been already guessed&quot;</span><span class="s0"> 
+        </span><span class="s2">elif </span><span class="s0">guess </span><span class="s2">in </span><span class="s0">word: 
+            </span><span class="s2">print </span><span class="s1">&quot;Yep!&quot;</span><span class="s0"> 
+            ans=</span><span class="s1">''</span><span class="s0"> 
+            </span><span class="s2">for </span><span class="s0">i </span><span class="s2">in </span><span class="s0">range(len(word)): 
+                </span><span class="s2">if </span><span class="s0">word[i]==guess </span><span class="s2">and </span><span class="s0">answer[i] == </span><span class="s1">'-'</span><span class="s0">: 
+                    ans+=guess 
+                </span><span class="s2">else</span><span class="s0">: 
+                    ans+=answer[i] 
+            answer=ans 
+            </span><span class="s2">if </span><span class="s1">'-' </span><span class="s2">not in </span><span class="s0">answer: 
+                </span><span class="s2">print </span><span class="s1">'Congratulations! You win!'</span><span class="s0"> 
+                tries=</span><span class="s3">0</span><span class="s0"> 
+            </span><span class="s2">print </span><span class="s0">ans 
+        </span><span class="s2">elif </span><span class="s0">tries==</span><span class="s3">6</span><span class="s0">: 
+            </span><span class="s2">print </span><span class="s1">&quot;The Hangman is starter to build (- 1 try)&quot;</span><span class="s0"> 
+            tries-=</span><span class="s3">1</span><span class="s0"> 
+            </span><span class="s2">print </span><span class="s0">answer 
+        </span><span class="s2">elif </span><span class="s0">tries==</span><span class="s3">5</span><span class="s0">: 
+            </span><span class="s2">print </span><span class="s1">&quot;The Hangman is built (- 1 try)&quot;</span><span class="s0"> 
+            tries-=</span><span class="s3">1</span><span class="s0"> 
+            </span><span class="s2">print </span><span class="s0">answer 
+        </span><span class="s2">elif </span><span class="s0">tries==</span><span class="s3">4</span><span class="s0">: 
+            </span><span class="s2">print </span><span class="s1">&quot;The rope is hung (- 1 try)&quot;</span><span class="s0"> 
+            tries-=</span><span class="s3">1</span><span class="s0"> 
+            </span><span class="s2">print </span><span class="s0">answer 
+        </span><span class="s2">elif </span><span class="s0">tries==</span><span class="s3">3</span><span class="s0">: 
+            </span><span class="s2">print </span><span class="s1">&quot;The Hanger is here (- 1 try)&quot;</span><span class="s0"> 
+            tries-=</span><span class="s3">1</span><span class="s0"> 
+            </span><span class="s2">print </span><span class="s0">answer 
+        </span><span class="s2">elif </span><span class="s0">tries==</span><span class="s3">2</span><span class="s0">: 
+            </span><span class="s2">print </span><span class="s1">&quot;You are in a chair(Last try)&quot;</span><span class="s0"> 
+            tries-=</span><span class="s3">1</span><span class="s0"> 
+            </span><span class="s2">print </span><span class="s0">answer 
+        </span><span class="s2">elif </span><span class="s0">tries==</span><span class="s3">1</span><span class="s0">: 
+            </span><span class="s2">print </span><span class="s1">&quot;The chair have been kicked out! You lose!&quot;</span><span class="s0"> 
+            tries-=</span><span class="s3">1</span><span class="s0"> 
+            </span><span class="s2">print </span><span class="s1">&quot;The word was %s&quot; </span><span class="s0">%word 
+        were+=guess 
+letters=[</span><span class="s1">'a'</span><span class="s0">,</span><span class="s1">'b'</span><span class="s0">,</span><span class="s1">'c'</span><span class="s0">,</span><span class="s1">'d'</span><span class="s0">,</span><span class="s1">'e'</span><span class="s0">,</span><span class="s1">'f'</span><span class="s0">,</span><span class="s1">'g'</span><span class="s0">,</span><span class="s1">'h'</span><span class="s0">,</span><span class="s1">'i'</span><span class="s0">,</span><span class="s1">'j'</span><span class="s0">,</span><span class="s1">'k'</span><span class="s0">,</span><span class="s1">'l'</span><span class="s0">,</span><span class="s1">'m'</span><span class="s0">,</span><span class="s1">'n'</span><span class="s0">,</span><span class="s1">'o'</span><span class="s0">,</span><span class="s1">'p'</span><span class="s0">,</span><span class="s1">'q'</span><span class="s0">,</span><span class="s1">'r'</span><span class="s0">,</span><span class="s1">'s'</span><span class="s0">,</span><span class="s1">'t'</span><span class="s0">,</span><span class="s1">'u'</span><span class="s0">,</span><span class="s1">'v'</span><span class="s0">,</span><span class="s1">'w'</span><span class="s0">,</span><span class="s1">'x'</span><span class="s0">,</span><span class="s1">'y'</span><span class="s0">,</span><span class="s1">'z'</span><span class="s0">] 
+words=[</span><span class="s1">'investigation'</span><span class="s0">,</span><span class="s1">'automobile'</span><span class="s0">,</span><span class="s1">'paper'</span><span class="s0">,</span><span class="s1">'flower'</span><span class="s0">,</span><span class="s1">'shop'</span><span class="s0">,</span><span class="s1">'telephone'</span><span class="s0">,</span><span class="s1">'window'</span><span class="s0">,</span><span class="s1">'garden'</span><span class="s0">,</span><span class="s1">'leopard'</span><span class="s0">,</span><span class="s1">'water'</span><span class="s0">] 
+</span><span class="s2">print </span><span class="s1">&quot;Welcome to The Hangman!&quot;</span><span class="s0"> 
+</span><span class="s2">print</span><span class="s0"> 
+raw_input(</span><span class="s1">&quot;Press Enter&quot;</span><span class="s0">) 
+</span><span class="s2">print </span><span class="s1">&quot;The rule of this game are very similar - guess the word by letters.&quot;</span><span class="s0"> 
+</span><span class="s2">print </span><span class="s1">&quot;You'll have 6 tries&quot;</span><span class="s0"> 
+raw_input(</span><span class="s1">&quot;Press Enter&quot;</span><span class="s0">) 
+</span><span class="s2">print </span><span class="s1">&quot;</span><span class="s2">\n</span><span class="s1">&quot;</span><span class="s0">*</span><span class="s3">5</span><span class="s0"> 
+</span><span class="s2">print </span><span class="s1">&quot;Let's start!&quot;</span><span class="s0"> 
+</span><span class="s2">print</span><span class="s0"> 
+</span><span class="s2">from </span><span class="s0">random </span><span class="s2">import </span><span class="s0">randint 
+yn=</span><span class="s1">'y'</span><span class="s0"> 
+</span><span class="s2">while </span><span class="s0">yn==</span><span class="s1">'y'</span><span class="s0">: 
+    key=raw_input(</span><span class="s1">'Enter 1 if you want to create word for smb else or enter 2 if you want to guess one of my word: '</span><span class="s0">) 
+    </span><span class="s2">if </span><span class="s0">key == </span><span class="s1">'1'</span><span class="s0">: 
+        word=raw_input(</span><span class="s1">'Enter the word: '</span><span class="s0">) 
+        </span><span class="s2">while </span><span class="s0">len(word)&lt;</span><span class="s3">2</span><span class="s0">: 
+            word=raw_input(</span><span class="s1">'Enter the word: '</span><span class="s0">) 
+            </span><span class="s2">for </span><span class="s0">i </span><span class="s2">in </span><span class="s0">word: 
+                </span><span class="s2">if </span><span class="s0">i </span><span class="s2">not in </span><span class="s0">letters: 
+                    word=</span><span class="s1">''</span><span class="s0"> 
+        </span><span class="s2">print </span><span class="s1">'</span><span class="s2">\n</span><span class="s1">'</span><span class="s0">*</span><span class="s3">50</span><span class="s0"> 
+        </span><span class="s2">print </span><span class="s1">&quot;The game is starting...&quot;</span><span class="s0"> 
+        body(word) 
+    </span><span class="s2">elif </span><span class="s0">key == </span><span class="s1">'2'</span><span class="s0">: 
+        i=randint(</span><span class="s3">0</span><span class="s0">,len(words)-</span><span class="s3">1</span><span class="s0">) 
+        word=words[i] 
+        </span><span class="s2">print </span><span class="s1">'</span><span class="s2">\n</span><span class="s1">'</span><span class="s0">*</span><span class="s3">50</span><span class="s0"> 
+        </span><span class="s2">print </span><span class="s1">&quot;The game is starting...&quot;</span><span class="s0"> 
+        body(word) 
+    </span><span class="s2">else</span><span class="s0">: 
+        </span><span class="s2">print </span><span class="s1">&quot;repeat!&quot;</span><span class="s0"> 
+    yn=raw_input(</span><span class="s1">'Do you want to start again? y/n '</span><span class="s0">) 
+</span><span class="s2">print </span><span class="s1">&quot;Thank you for playing&quot;</span></pre>
+</body>
+</html>
